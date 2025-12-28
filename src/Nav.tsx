@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 export default function Nav() {
   return (
     <nav className="fixed top-12 left-0 right-0 gap-8 justify-center flex text-white">
-      <a className="hover:underline" href="#">
+      <Link className="hover:underline" to="/">
         Discover
-      </a>
-      <a className="hover:underline" href="#">
+      </Link>
+      <Link className="hover:underline" to="/browse">
         Browse
-      </a>
-      <a className="hover:underline" href="#">
+      </Link>
+      <Link className="hover:underline" to="/contribute">
         Contribute
-      </a>
+      </Link>
     </nav>
   );
 }
