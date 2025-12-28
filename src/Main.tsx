@@ -3,13 +3,13 @@ import arrowImage from "./assets/arrow.png";
 
 export default function Main() {
   return (
-    <main>
+    <main className="animate-fade-in">
       <section className="flex flex-col items-center min-h-screen justify-center">
         <div className="relative">
           <img
             src={cloudImage}
             alt="Cloud"
-            className="w-50 h-50 sm:w-70 sm:h-70"
+            className="w-50 h-50 sm:w-70 sm:h-70 animate-float"
           ></img>
           <h1 className="uppercase shizuru-regular text-white text-6xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 sm:-translate-y-1/8 sm:text-7xl">
             UW Sleeper

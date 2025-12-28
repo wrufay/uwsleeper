@@ -1,6 +1,6 @@
 export default function Contribute() {
   return (
-    <main className="flex items-center flex-col justify-center min-h-screen">
+    <main className="flex items-center flex-col justify-center min-h-screen animate-fade-in">
       <h1 className="text-white text-4xl shizuru-regular uppercase mb-8">
         Add a location
       </h1>
