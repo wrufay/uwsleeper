@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Shizuru&display=swap");
+
+/* font classes */
+.shizuru-regular {
+  font-family: "Shizuru", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.nanum-gothic-coding-regular {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* colours */
+:root {
+  --dark: #31393c;
+  --aritzia-blue: #2176ff;
+  --sky-blue: #33a1fd;
+  --goose-yellow: #fdca40;
+  --bright-orange: #f79824;
+}
+
+* {
+  transition: all 0.2s ease;
+}
