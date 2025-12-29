@@ -33,7 +33,7 @@ export default function Contribute() {
         </div>
         <button
           id="submitAddLocationBtn"
-          className="mt-4 hover:bg-[var(--bright-orange)] cursor-pointer bg-[var(--goose-yellow)] w-30 mx-auto p-2 rounded-lg text-[var(--aritzia-blue)]"
+          className="mt-4 hover:bg-[var(--bright-orange)] cursor-pointer bg-[var(--goose-yellow)] w-30 mx-auto p-2 rounded-full text-[var(--aritzia-blue)]"
         >
           Submit
         </button>
