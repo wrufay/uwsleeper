@@ -112,12 +112,12 @@ export default function LocationCard({ spot }: LocationCardProps) {
       onClick={showFullDescription}
       className="bg-white cursor-pointer h-60 rounded-md shadow-md p-8 hover:shadow-xl flex flex-col gap-4 sm:gap-8 items-center animate-fade-in"
     >
-      <h3 className="text-xl font-bold text-[var(--aritzia-blue)]">
+      <h3 className="text-l xs:text-xl text-[var(--aritzia-blue)]">
         {spot.location} in{" "}
         <span className="text-[var(--bright-orange)]">{spot.building}</span>
       </h3>
 
-      <p className="text-base text-gray-700">{spot.tagLine}</p>
+      <p className="text-sm xs:text-base text-gray-700">{spot.tagLine}</p>
       <p className="text-xs italic text-gray-400">click me</p>
     </div>
   );
