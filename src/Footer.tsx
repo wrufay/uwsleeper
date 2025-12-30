@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full mt-4 xl:mt-0 py-8 mb-2">
+    <footer className="w-full py-8 mb-2">
       <div className="flex justify-center items-center">
         <p className="text-white/80 text-xs">
           github{" "}

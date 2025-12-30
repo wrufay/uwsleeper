@@ -170,13 +170,13 @@ export default function Browse() {
   };
 
   return (
-    <div className="flex justify-center mt-4 sm:mt-8 animate-fade-in flex-grow">
-      <main className="w-4xl sm:p-6 p-0 lg:p-8">
-        <div className="flex items-center justify-center mb-6 lg:mb-10">
+    <div className="flex items-center animate-fade-in justify-center flex-grow sm:mt-0 mt-8">
+      <main className="max-w-4xl w-full sm:p-6 p-0 lg:p-8">
+        <div className="mb-6 lg:mb-10">
           {/* filters button */}
           <button
             onClick={showFilterModal}
-            className="rounded-full bg-linear-to-l from-[var(--goose-yellow)] to-[var(--bright-orange)] cursor-pointer text-[var(--aritzia-blue)] px-4 py-2 rounded-full hover:scale-105"
+            className="bg-gradient-to-l from-[var(--goose-yellow)] to-[var(--bright-orange)] cursor-pointer text-[var(--aritzia-blue)] px-4 py-2 rounded-full hover:scale-105"
           >
             Filters
           </button>
