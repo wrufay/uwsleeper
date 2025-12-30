@@ -18,19 +18,19 @@ interface Spot {
 
 interface LocationCardProps {
   spot: Spot;
-  onVote: (spotId: number, voteType: 'upvote' | 'downvote') => Promise<void>;
-  voteStatus: 'upvoted' | 'downvoted' | null;
+  onVote: (spotId: number, voteType: "upvote" | "downvote") => Promise<void>;
+  voteStatus: "upvoted" | "downvoted" | null;
 }
 
-export default function LocationCard({ spot, onVote, voteStatus }: LocationCardProps) {
+export default function LocationCard({ spot, onVote }: LocationCardProps) {
   const handleUpvote = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onVote(spot.id, 'upvote');
+    onVote(spot.id, "upvote");
   };
 
   const handleDownvote = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onVote(spot.id, 'downvote');
+    onVote(spot.id, "downvote");
   };
 
   const showFullDescription = () => {
@@ -144,13 +144,17 @@ export default function LocationCard({ spot, onVote, voteStatus }: LocationCardP
           className="flex items-center gap-1 px-2 py-1 rounded transition-opacity hover:opacity-70 cursor-pointer"
         >
           <img src={upvoteIcon} alt="upvote" className="w-5 h-5" />
-          <span className="text-xs font-medium text-gray-700">{spot.upvotes || 0}</span>
+          <span className="text-xs font-medium text-gray-700">
+            {spot.upvotes || 0}
+          </span>
         </button>
         <button
           onClick={handleDownvote}
           className="flex items-center gap-1 px-2 py-1 rounded transition-opacity hover:opacity-70 cursor-pointer"
         >
-          <span className="text-xs font-medium text-gray-700">{spot.downvotes || 0}</span>
+          <span className="text-xs font-medium text-gray-700">
+            {spot.downvotes || 0}
+          </span>
           <img src={downvoteIcon} alt="downvote" className="w-5 h-5" />
         </button>
       </div>

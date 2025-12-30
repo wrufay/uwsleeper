@@ -99,7 +99,7 @@ export default function Main() {
             Randomize
           </button>
           <span className="text-white text-sm sm:text-lg">
-            or describe what you need rn...
+            or describe what you need...
           </span>
 
           {/* textarea and search button here*/}
