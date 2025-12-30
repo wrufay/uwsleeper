@@ -77,7 +77,7 @@ export default function Main() {
   };
 
   return (
-    <main className="animate-fade-in flex-grow mb-10 sm:mb-0 flex items-center justify-center">
+    <main className="animate-fade-in flex-grow mb-10 sm:mb-0 flex items-center justify-center mt-2">
       <section className="flex flex-col items-center">
         <div className="relative">
           <img
