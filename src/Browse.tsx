@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import LocationCard from "./LocationCard";
 import Swal from "sweetalert2";
 import { customSwalConfig } from "./swalConfig";
+import { getVoteStatus, saveVote } from "./utils/voteStorage";
 
 interface Spot {
   id: number;
@@ -12,6 +13,8 @@ interface Spot {
   footTraffic?: number;
   noiseLevel?: number;
   tagLine?: string;
+  upvotes?: number;
+  downvotes?: number;
 }
 
 export default function Browse() {
@@ -36,11 +39,75 @@ export default function Browse() {
         "https://uwsleeperbackend-production.up.railway.app/api/spots"
       );
       const data = await response.json();
-      setSpots(data);
+      // Sort by popularity (upvotes - downvotes), highest first
+      const sortedData = data.sort((a: Spot, b: Spot) => {
+        const scoreA = (a.upvotes || 0) - (a.downvotes || 0);
+        const scoreB = (b.upvotes || 0) - (b.downvotes || 0);
+        return scoreB - scoreA;
+      });
+      setSpots(sortedData);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch spots:", error);
       setLoading(false);
+    }
+  };
+
+  const handleVote = async (spotId: number, voteType: 'upvote' | 'downvote') => {
+    const currentVote = getVoteStatus(spotId);
+
+    try {
+      let endpoint = '';
+
+      // If clicking the same vote type, remove the vote
+      if (currentVote === `${voteType}d`) {
+        endpoint = `https://uwsleeperbackend-production.up.railway.app/api/spots/${spotId}/remove-${voteType}`;
+
+        const response = await fetch(endpoint, { method: 'POST' });
+        if (!response.ok) throw new Error('Failed to remove vote');
+
+        const updatedSpot = await response.json();
+
+        // Remove from localStorage
+        const votes = JSON.parse(localStorage.getItem('spotVotes') || '{}');
+        delete votes[spotId];
+        localStorage.setItem('spotVotes', JSON.stringify(votes));
+
+        // Update local state
+        setSpots(prevSpots =>
+          prevSpots.map(spot => spot.id === spotId ? updatedSpot : spot)
+        );
+        return;
+      }
+
+      // If switching votes, remove the old vote first
+      if (currentVote) {
+        const oldVoteType = currentVote === 'upvoted' ? 'upvote' : 'downvote';
+        await fetch(
+          `https://uwsleeperbackend-production.up.railway.app/api/spots/${spotId}/remove-${oldVoteType}`,
+          { method: 'POST' }
+        );
+      }
+
+      // Add the new vote
+      endpoint = `https://uwsleeperbackend-production.up.railway.app/api/spots/${spotId}/${voteType}`;
+      const response = await fetch(endpoint, { method: 'POST' });
+
+      if (!response.ok) throw new Error('Vote failed');
+
+      const updatedSpot = await response.json();
+
+      // Save to localStorage
+      saveVote(spotId, `${voteType}d` as 'upvoted' | 'downvoted');
+
+      // Update local state
+      setSpots(prevSpots =>
+        prevSpots.map(spot => spot.id === spotId ? updatedSpot : spot)
+      );
+
+    } catch (error) {
+      console.error('Vote failed:', error);
+      alert('Failed to vote. Try again!');
     }
   };
 
@@ -191,7 +258,12 @@ export default function Browse() {
             {/* grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-8 mb-10">
               {currentSpots.map((spot) => (
-                <LocationCard key={spot.id} spot={spot} />
+                <LocationCard
+                  key={spot.id}
+                  spot={spot}
+                  onVote={handleVote}
+                  voteStatus={getVoteStatus(spot.id)}
+                />
               ))}
             </div>
 
