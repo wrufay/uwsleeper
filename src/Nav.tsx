@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <nav className="fixed top-12 left-0 right-0 gap-8 justify-center flex text-white animate-fade-in">
+    <nav className="pt-14 gap-8 justify-center flex text-white">
       <Link className="hover:text-white/67" to="/">
         Discover
       </Link>

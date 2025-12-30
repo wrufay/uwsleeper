@@ -11,19 +11,22 @@ interface Spot {
   footTraffic?: number;
   noiseLevel?: number;
 
-  // not yet added
-  reason?: string;
+  tagLine?: string;
 }
 
 export default function Main() {
   // setup swal output design
   const showLocationSwal = (spot: Spot) => {
     const title = `${spot.location} in ${spot.building}`;
-    const description = `${spot.comfortRating}/5 comfort
+    const description = `
+    ${spot.tagLine}
 
-${spot.noiseLevel}/5 noise level
 
-${spot.footTraffic}/5 busyness on a typical day`;
+    ${spot.comfortRating}/5 comfort
+
+    ${spot.noiseLevel}/5 noise level
+
+    ${spot.footTraffic}/5 typical busyness`;
 
     swalVariants.success(title.toUpperCase(), description);
   };
@@ -75,7 +78,7 @@ ${spot.footTraffic}/5 busyness on a typical day`;
 
   return (
     <main className="animate-fade-in">
-      <section className="flex flex-col items-center min-h-screen justify-center">
+      <section className="flex flex-col items-center mt-32">
         <div className="relative">
           <img
             src={cloudImage}
@@ -91,11 +94,13 @@ ${spot.footTraffic}/5 busyness on a typical day`;
           <button
             id="randomizeBtn"
             onClick={displayRandom}
-            className="w-35 hover:cursor-pointer bg-[var(--goose-yellow)]  text-[var(--aritzia-blue)] rounded-full px-4 py-2 hover:scale-105"
+            className="w-35 hover:cursor-pointer bg-linear-to-r from-[var(--goose-yellow)] to-[var(--bright-orange)] text-[var(--aritzia-blue)] rounded-full px-4 py-2 hover:scale-105"
           >
             Randomize
           </button>
-          <span className="text-white text-sm sm:text-lg">or</span>
+          <span className="text-white text-sm sm:text-lg">
+            or describe what you need rn...
+          </span>
 
           {/* textarea and search button here*/}
           <div className="flex justify-center w-full relative">
@@ -103,12 +108,12 @@ ${spot.footTraffic}/5 busyness on a typical day`;
               id="searchInput"
               rows={3}
               className="bg-white text-[var(--dark)] px-4 py-4 text-center rounded-lg focus:outline-none hover:bg-gray-100 w-60 sm:w-96 resize-none shadow-[-3px_6px_8px_rgba(0,0,0,0.15)]"
-              placeholder="Describe your ideal nap spot..."
+              placeholder="i woke up at 4am and need somewhere comfy to nap before my math137 exam in PAC"
             ></textarea>
             <button
               id="searchBtn"
               onClick={displaySearchResult}
-              className="hover:bg-gray-300 bg-gray-200 w-13 h-13 rounded-full cursor-pointer absolute right-0 translate-x-2 translate-y-15 sm:translate-x-3 sm:translate-y-12 sm:w-16 sm:h-16 shadow-[-3px_6px_8px_rgba(0,0,0,0.15)] hover:scale-105 flex items-center justify-center"
+              className=" bg-[var(--goose-yellow)] w-13 h-13 rounded-full cursor-pointer absolute right-0 translate-x-2 translate-y-15 sm:translate-x-3 sm:translate-y-14 sm:w-16 sm:h-16 shadow-[-3px_6px_8px_rgba(0,0,0,0.15)] hover:scale-105 flex items-center justify-center"
             >
               <img
                 src={arrowImage}

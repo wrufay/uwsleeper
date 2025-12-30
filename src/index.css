@@ -28,7 +28,8 @@
 
 /* animations */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -50,5 +51,6 @@
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-in;
+  animation: fadeIn 0.6s ease-in forwards;
+  opacity: 0;
 }
