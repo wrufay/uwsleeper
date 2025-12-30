@@ -90,7 +90,7 @@ export default function Main() {
           </h1>
         </div>
         {/* selector buttons and inputs here*/}
-        <div className="mt-6 sm:mt-8 flex flex-col gap-5 items-center">
+        <div className="mt-6 sm:mt-8 flex flex-col gap-6 items-center">
           <button
             id="randomizeBtn"
             onClick={displayRandom}
