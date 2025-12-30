@@ -9,9 +9,9 @@ export default function Nav() {
       <Link className="hover:text-white/67" to="/browse">
         Browse
       </Link>
-      <Link className="hover:text-white/67" to="/contribute">
+      {/* <Link className="hover:text-white/67" to="/contribute">
         Contribute
-      </Link>
+      </Link> */}
     </nav>
   );
 }
