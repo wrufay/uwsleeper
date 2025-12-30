@@ -78,7 +78,7 @@ export default function Main() {
 
   return (
     <main className="animate-fade-in">
-      <section className="flex flex-col items-center mt-32">
+      <section className="flex flex-col items-center mt-18 sm-mt-32">
         <div className="relative">
           <img
             src={cloudImage}

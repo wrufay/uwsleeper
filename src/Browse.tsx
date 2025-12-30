@@ -170,12 +170,12 @@ export default function Browse() {
   };
 
   return (
-    <div className="flex justify-center mt-12 animate-fade-in">
+    <div className="flex justify-center mt-2 sm-mt-12 animate-fade-in">
       <main className="w-4xl p-6 lg:p-8">
         <div className="flex items-center justify-center mb-6 lg:mb-10">
           <button
             onClick={showFilterModal}
-            className="bg-linear-to-l from-[var(--goose-yellow)] to-[var(--bright-orange)] cursor-pointer text-[var(--aritzia-blue)] px-4 py-2 rounded-full hover:scale-105"
+            className="bg-linear-to-l from-[var(--goose-yellow)] to-[var(--bright-orange)] cursor-pointer w-full text-[var(--aritzia-blue)] px-4 py-2 rounded-full hover:scale-105"
           >
             Filters
           </button>
@@ -194,6 +194,7 @@ export default function Browse() {
               ))}
             </div>
 
+            {/* page navigator */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-4">
                 <button
@@ -201,12 +202,12 @@ export default function Browse() {
                     setCurrentPage((prev) => Math.max(prev - 1, 1))
                   }
                   disabled={currentPage === 1}
-                  className="px-4 py-2 bg-none text-white text-lg border border-white/67 rounded-lg hover:bg-white/20 cursor-pointer"
+                  className="px-4 py-2 bg-none text-white text-sm sm:text-lg border border-white/67 rounded-lg hover:bg-white/20 cursor-pointer"
                 >
-                  Previous
+                  Prev
                 </button>
 
-                <span className="text-white">
+                <span className="text-white text-xs sm:text-base">
                   Page {currentPage} of {totalPages}
                 </span>
 
@@ -215,7 +216,7 @@ export default function Browse() {
                     setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                   }
                   disabled={currentPage === totalPages}
-                  className="px-4 py-2 bg-none text-white rounded-lg  border border-white/67 text-lg  hover:bg-white/20 cursor-pointer"
+                  className="px-4 py-2 bg-none text-white rounded-lg text-sm sm:text-lg border border-white/67 text-lg  hover:bg-white/20 cursor-pointer"
                 >
                   Next
                 </button>

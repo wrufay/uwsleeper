@@ -6,16 +6,20 @@ import Main from "./Main.tsx";
 import Browse from "./Browse.tsx";
 import Contribute from "./Contribute.tsx";
 import Nav from "./Nav.tsx";
+import Footer from "./Footer.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/contribute" element={<Contribute />} />
-      </Routes>
+      <div className="min-h-screen flex flex-col">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/contribute" element={<Contribute />} />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   </StrictMode>
 );
