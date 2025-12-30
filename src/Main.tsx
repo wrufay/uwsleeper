@@ -77,8 +77,8 @@ export default function Main() {
   };
 
   return (
-    <main className="animate-fade-in">
-      <section className="flex flex-col items-center mt-18 sm-mt-32">
+    <main className="animate-fade-in flex-grow mb-10 sm:mb-0">
+      <section className="flex flex-col items-center mt-16 sm:mt-18 lg:mt-22 xl:mt-26">
         <div className="relative">
           <img
             src={cloudImage}
@@ -107,7 +107,7 @@ export default function Main() {
             <textarea
               id="searchInput"
               rows={3}
-              className="bg-white text-[var(--dark)] px-4 py-4 text-center rounded-lg focus:outline-none hover:bg-gray-100 w-60 sm:w-96 resize-none shadow-[-3px_6px_8px_rgba(0,0,0,0.15)]"
+              className="bg-white text-sm sm:text-base text-[var(--dark)] px-4 py-4 text-center rounded-lg focus:outline-none hover:bg-gray-100 w-60 sm:w-96 resize-none shadow-[-3px_6px_8px_rgba(0,0,0,0.15)]"
               placeholder="i woke up at 4am and need somewhere comfy to nap before my math137 exam in PAC"
             ></textarea>
             <button
