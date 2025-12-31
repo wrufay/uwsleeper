@@ -22,6 +22,7 @@ export default function Browse() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const spotsPerPage = 4;
+  const [votingSpotId, setVotingSpotId] = useState<number | null>(null);
 
   // Filter states
   const [buildingFilter, setBuildingFilter] = useState("");
@@ -54,6 +55,10 @@ export default function Browse() {
   };
 
   const handleVote = async (spotId: number, voteType: 'upvote' | 'downvote') => {
+    // Prevent multiple concurrent votes on the same spot
+    if (votingSpotId === spotId) return;
+
+    setVotingSpotId(spotId);
     const currentVote = getVoteStatus(spotId);
 
     try {
@@ -108,6 +113,8 @@ export default function Browse() {
     } catch (error) {
       console.error('Vote failed:', error);
       alert('Failed to vote. Try again!');
+    } finally {
+      setVotingSpotId(null);
     }
   };
 
