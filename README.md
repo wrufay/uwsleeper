@@ -1,9 +1,24 @@
-# uwsleeper
+# Sometimes the answer to your fatigue is a nap, not another Monster or Alani
 
-link to backend
+
+Find your next sleeping spot with UW Sleeper!
+
+
+Made with React, Typescript, TailwindCSS and Anthropic API
+
+Link to the backend (Spring Boot + Hibernate Deployed on Railway)
 https://github.com/wrufay/uwsleeper_backend
 
+
+
+
+
+
+
+
+
 todo:
+
 
 - fix/add the contribute/suggest spots page
 
